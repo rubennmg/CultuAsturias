@@ -1,6 +1,6 @@
 package com.example.cultuasturias.network
 
-import com.example.cultuasturias.model.CulturalVenuesItem
+import com.example.cultuasturias.model.CulturalVenueItem
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
@@ -15,7 +15,7 @@ private val BASE_URL = " http://orion.edv.uniovi.es"
 
 interface RestApiService {
     @GET("/~arias/json/MuseosEspaciosCulturales.json")
-    suspend fun getCulturalVenues(): List<CulturalVenuesItem>
+    suspend fun getCulturalVenues(): List<CulturalVenueItem>
 }
 
 private val moshi = Moshi.Builder()

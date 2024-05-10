@@ -1,3 +1,3 @@
 package com.example.cultuasturias.model
 
-class CulturalVenues : ArrayList<CulturalVenuesItem>()
+class CulturalVenues : ArrayList<CulturalVenueItem>()

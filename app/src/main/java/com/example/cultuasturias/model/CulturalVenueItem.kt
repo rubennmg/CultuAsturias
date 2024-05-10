@@ -1,6 +1,10 @@
 package com.example.cultuasturias.model
 
-data class CulturalVenuesItem(
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "cultural_venues_table")
+data class CulturalVenueItem(
     val AccesoATerrazaOZonaExterior: String,
     val AccesoAlInterior: String,
     val AdmitenOtrasMascotasAdemasDePerros: String,
@@ -20,7 +24,7 @@ data class CulturalVenuesItem(
     val LimitacionDelTamanopesoDeLaMascota: String,
     val Localidad: String,
     val MasInformacion: String,
-    val Nombre: String,
+    @PrimaryKey val Nombre: String,
     val NumeroMaximoDePerrosPorPersona: String,
     val Observaciones: String,
     val OtrasMascotasPermitidas: String,
