@@ -1,28 +1,57 @@
 package com.example.cultuasturias.data
 
-import com.example.cultuasturias.db.CulturalVenueDatabase
+import android.content.Context
+import com.example.cultuasturias.db.CulturalVenueDAO
+import com.example.cultuasturias.db.CultuAstDatabase
 import com.example.cultuasturias.model.CulturalVenueItem
 import com.example.cultuasturias.network.RestApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 
 object Repository {
 
-    private  val culturalVenueDAO = CulturalVenueDatabase.getInstance()!!.culturalVenueDAO()
+    private lateinit var culturalVenueDAO: CulturalVenueDAO
+
+    fun initializeDatabase(context: Context) {
+        val db = CultuAstDatabase.getInstance(context)
+        if (db != null) {
+            culturalVenueDAO = db.culturalVenueDAO()
+        }
+    }
 
     fun updateCulturalVenues() =
         flow <ApiResult<List<CulturalVenueItem>>> {
             try {
                 val culturalVenues = RestApi.retrofitService.getCulturalVenues()
+                withContext(Dispatchers.IO) {
+                    culturalVenueDAO.insertAll(culturalVenues)
+                }
                 emit(ApiResult.Success(culturalVenues))
             } catch (e: Exception) {
                 emit(ApiResult.Error(e.toString()))
             }
         }.flowOn(Dispatchers.IO)
 
-    fun getCulturalVenuesNames() = culturalVenueDAO.getNames()
-    fun getCulturalVenueByName(name: String) = culturalVenueDAO.getCulturalVenueByName(name)
-    suspend fun insertCulturalVenue(culturalVenueItem: CulturalVenueItem) = culturalVenueDAO.insertCulturalVenue(culturalVenueItem)
-    suspend fun deleteCulturalVenue(name: String) = culturalVenueDAO.deleteCulturalVenue(name)
+    fun getAllCulturalVenues(): Flow<List<CulturalVenueItem>> {
+        return flow {
+            emit(culturalVenueDAO?.getAllCulturalVenues() ?: emptyList())
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun insertAll(culturalVenues: List<CulturalVenueItem>) = culturalVenueDAO.insertAll(culturalVenues)
+
+    fun searchCulturalVenues(name: String): Flow<List<CulturalVenueItem>> =
+        culturalVenueDAO.searchCulturalVenues("%$name%")
+            .flowOn(Dispatchers.IO)
+
+    fun getCulturalVenuesNames() = culturalVenueDAO?.getNames()
+
+    fun getCulturalVenueByName(name: String) = culturalVenueDAO?.getCulturalVenueByName(name)
+
+    suspend fun insertCulturalVenue(culturalVenueItem: CulturalVenueItem) = culturalVenueDAO?.insertCulturalVenue(culturalVenueItem)
+
+    suspend fun deleteCulturalVenue(name: String) = culturalVenueDAO?.deleteCulturalVenue(name)
 }

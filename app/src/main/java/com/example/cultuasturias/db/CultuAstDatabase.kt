@@ -13,20 +13,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Database(entities = [CulturalVenueItem::class], version = 1)
-abstract class CulturalVenueDatabase : RoomDatabase() {
+abstract class CultuAstDatabase : RoomDatabase() {
 
     abstract fun culturalVenueDAO(): CulturalVenueDAO
 
     companion object {
-        private var INSTANCE: CulturalVenueDatabase? = null
+        private var INSTANCE: CultuAstDatabase? = null
 
-        fun getInstance(context: Context): CulturalVenueDatabase? {
+        fun getInstance(context: Context): CultuAstDatabase? {
             if (INSTANCE == null) {
-                synchronized(CulturalVenueDatabase::class) {
+                synchronized(CultuAstDatabase::class) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        CulturalVenueDatabase::class.java, "cultural_venues.db"
+                        CultuAstDatabase::class.java, "cultu_ast.db"
                     )
+                        .addCallback(CALLBACK)
                         .build()
                 }
             }
@@ -37,7 +38,7 @@ abstract class CulturalVenueDatabase : RoomDatabase() {
             INSTANCE = null
         }
 
-        fun getInstance(): CulturalVenueDatabase? {
+        fun getInstance(): CultuAstDatabase? {
             return INSTANCE
         }
 
@@ -49,9 +50,7 @@ abstract class CulturalVenueDatabase : RoomDatabase() {
                 CoroutineScope(Dispatchers.IO).launch {
                     Repository.updateCulturalVenues().collect { apiResult ->
                         if (apiResult is ApiResult.Success) {
-                            apiResult.data?.forEach { culturalVenueItem ->
-                                INSTANCE!!.culturalVenueDAO().insertCulturalVenue(culturalVenueItem)
-                            }
+                            INSTANCE!!.culturalVenueDAO().insertAll(apiResult._data)
                         }
                     }
                 }

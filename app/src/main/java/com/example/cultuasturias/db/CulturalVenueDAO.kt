@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CulturalVenueDAO {
 
+    @Query("SELECT * FROM cultural_venues_table")
+    fun getAllCulturalVenues(): List<CulturalVenueItem>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCulturalVenue(culturalVenueItem: CulturalVenueItem)
 
@@ -21,4 +24,10 @@ interface CulturalVenueDAO {
 
     @Query("SELECT Nombre FROM cultural_venues_table")
     fun getNames(): Flow<List<String>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(culturalVenues: List<CulturalVenueItem>)
+
+    @Query("SELECT * FROM cultural_venues_table WHERE Nombre LIKE :name")
+    fun searchCulturalVenues(name: String): Flow<List<CulturalVenueItem>>
 }

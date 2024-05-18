@@ -1,5 +1,6 @@
 package com.example.cultuasturias.model
 
+import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -42,3 +43,14 @@ data class CulturalVenueItem(
     val Youtube: String,
     val Zona: String
 )
+{
+    companion object DIFF_CALLBACK: DiffUtil.ItemCallback<CulturalVenueItem>() {
+        override fun areItemsTheSame(oldItem: CulturalVenueItem, newItem: CulturalVenueItem): Boolean {
+            return oldItem.Nombre == newItem.Nombre
+        }
+
+        override fun areContentsTheSame(oldItem: CulturalVenueItem, newItem: CulturalVenueItem): Boolean {
+            return oldItem == newItem
+        }
+    }
+}

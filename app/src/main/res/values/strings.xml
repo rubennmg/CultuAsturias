@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CultuAsturias</string>
+    <string name="itemHolder">NOMBRE: %1$s  —  CONCEJO: %2$s —  LOCALIDAD: %3$s</string>
 </resources>

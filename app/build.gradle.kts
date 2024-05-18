@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -9,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.cultuasturias"
-        minSdk = 19 // upgraded from 16 to 19 to use androidx.lifecycle
+        minSdk = 21 // upgraded from 16 to 19 to use androidx.lifecycle -> upgraded from 19 to 21 to use androidx.room
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -52,6 +54,7 @@ dependencies {
     implementation(libs.converter.moshi)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
+    kapt("androidx.room:room-compiler:2.6.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
