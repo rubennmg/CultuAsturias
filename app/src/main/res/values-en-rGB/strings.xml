@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CultuAsturias</string>
+    <string name="itemHolder">NAME: %1$s</string>
+    <string name="logo_desc">App logo</string>
+    <string name="search_hint">Search...</string>
+    <string name="filter_button_desc">Filter button</string>
+</resources>

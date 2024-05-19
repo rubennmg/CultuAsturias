@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_filter"
+        android:title="Filtrar"
+        android:icon="@drawable/ic_filter"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_settings"
+        android:title="Configuración"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_about"
+        android:title="Acerca de"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_preferences"
+        android:title="Preferencias"
+        app:showAsAction="never" />
+</menu>

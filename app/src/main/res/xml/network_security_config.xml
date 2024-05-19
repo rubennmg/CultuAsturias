@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Configuración para tráfico sin cifrar (HTTP) -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">orion.edv.uniovi.es</domain>
+    </domain-config>
+
+    <!-- Configuración para tráfico cifrado (HTTPS) -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">turismoasturiasprofesional.es</domain>
+        <trust-anchors>
+            <certificates src="@raw/turismoasturias_es"/>
+        </trust-anchors>
+    </domain-config>
+</network-security-config>

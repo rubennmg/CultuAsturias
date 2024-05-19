@@ -53,4 +53,13 @@ data class CulturalVenueItem(
             return oldItem == newItem
         }
     }
+
+    // Obtener lista de URLs de imágenes a partir del campo Slide
+    fun getSlideUrls(): List<String> {
+        return if (Slide.isNotBlank()) {
+            Slide.split(",")
+        } else {
+            emptyList()
+        }
+    }
 }

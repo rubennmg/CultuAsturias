@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">CultuAsturias</string>
     <string name="itemHolder">NOMBRE: %1$s  —  CONCEJO: %2$s —  LOCALIDAD: %3$s</string>
+    <string name="logo_desc">Logo de la app</string>
+    <string name="search_hint">Buscar…</string>
+    <string name="filter_button_desc">Botón para filtrar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
