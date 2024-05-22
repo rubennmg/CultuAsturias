@@ -43,7 +43,6 @@ class CvListFragment : Fragment() {
             when (result) {
                 is CultuAstUIState.Success -> {
                     culturalVenuesListAdapter.submitList(result.datos)
-                    Log.d("CvListFragment", "Slide: ${result.datos[0].Slide}")
                 }
                 is CultuAstUIState.Error -> {
                     Toast.makeText(context, result.message, Toast.LENGTH_LONG).show()

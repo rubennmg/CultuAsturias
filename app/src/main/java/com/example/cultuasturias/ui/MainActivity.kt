@@ -1,13 +1,16 @@
 package com.example.cultuasturias.ui
 
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.view.Window
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.cultuasturias.R
 import com.example.cultuasturias.databinding.ActivityMainBinding
 import com.example.cultuasturias.domain.SharedCvNameViewModel
@@ -24,6 +27,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+
+        // Cambiar el color de la barra de navegación (del dispositivo móvil)
+        val window: Window = window
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.colorPhoneNavBar)
 
         // Actualizar el nombre de búsqueda al escribir en el campo de texto
         binding.searchBar.addTextChangedListener(object : TextWatcher {

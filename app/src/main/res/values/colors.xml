@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#3577D4</color>
+    <color name="colorPrimaryDark">#5294EF</color>
+    <color name="colorSecondary">#CEE3F8</color>
+    <color name="colorAccent">#5294EF</color>
+    <color name="colorBackground">#F0F0F0</color>
+    <color name="colorText">#060A0F</color>
+    <color name="colorShadow">#F4F4F4</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorPhoneNavBar">#297ED3</color>
 </resources>

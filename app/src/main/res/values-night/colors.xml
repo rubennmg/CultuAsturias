@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2B6DCA</color>
+    <color name="colorPrimaryDark">#09335E</color>
+    <color name="colorSecondary">#113A6E</color>
+    <color name="colorAccent">#1051AD</color>
+    <color name="colorBackground">#03070C</color>
+    <color name="colorText">#F0F4F9</color>
+    <color name="colorShadow">#F4F4F4</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorPhoneNavBar">#09335E</color>
+</resources>
