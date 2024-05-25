@@ -10,17 +10,34 @@
         android:name="com.example.cultuasturias.ui.CvListFragment"
         android:label="fragment_cv_list"
         tools:layout="@layout/fragment_cv_list" >
+
         <action
             android:id="@+id/action_cvListFragment_to_cvItemDetailsFragment"
             app:destination="@id/cvItemDetailsFragment" />
+
+        <action
+            android:id="@+id/action_cvListFragment_to_cvMapFragment"
+            app:destination="@id/cvMapFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/cvItemDetailsFragment"
         android:name="com.example.cultuasturias.ui.CvItemDetailsFragment"
         android:label="fragment_cv_item_details"
         tools:layout="@layout/fragment_cv_item_details" >
+
         <action
             android:id="@+id/action_cvItemDetailsFragment_to_cvListFragment"
             app:destination="@id/cvListFragment" />
+
+        <action
+            android:id="@+id/action_cvItemDetailsFragment_to_cvMapFragment"
+            app:destination="@id/cvMapFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/cvMapFragment"
+        android:name="com.example.cultuasturias.ui.CvMapFragment"
+        android:label="fragment_cv_map"
+        tools:layout="@layout/fragment_cv_map" />
 </navigation>

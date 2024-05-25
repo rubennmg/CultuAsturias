@@ -9,25 +9,32 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cultuasturias.R
 import com.example.cultuasturias.databinding.FragmentCvListBinding
 import com.example.cultuasturias.domain.CulturalVenueViewModel
 import com.example.cultuasturias.domain.SharedCvNameViewModel
 import kotlinx.coroutines.launch
 
 class CvListFragment : Fragment() {
-
     private var _binding: FragmentCvListBinding? = null
     private val binding get() = _binding!!
-    private val culturalVenuesListAdapter = CulturalVenuesListAdapter()
     private val culturalVenueViewModel = CulturalVenueViewModel()
     private val sharedViewModel: SharedCvNameViewModel by activityViewModels()
+    private val culturalVenuesListAdapter = CulturalVenuesListAdapter { it ->
+        val bundle = Bundle().apply {
+            putString("culturalVenue", it)
+        }
+        findNavController().navigate(R.id.action_cvListFragment_to_cvItemDetailsFragment, bundle)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCvListBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 

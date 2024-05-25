@@ -7,11 +7,12 @@ import com.example.cultuasturias.databinding.CvItemBinding
 import com.example.cultuasturias.model.CulturalVenueItem
 
 
-class CulturalVenuesListAdapter: ListAdapter<CulturalVenueItem, CulturalVenuesViewHolder>(CulturalVenueItem.DIFF_CALLBACK) {
-
+class CulturalVenuesListAdapter(private val onNameselected: (String) -> Unit) : ListAdapter<CulturalVenueItem, CulturalVenuesViewHolder>(CulturalVenueItem.DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CulturalVenuesViewHolder {
         val itemBinding = CvItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
-        return CulturalVenuesViewHolder(itemBinding.root)
+        return CulturalVenuesViewHolder(itemBinding) {
+            onNameselected(getItem(it).Nombre)
+        }
     }
 
     override fun onBindViewHolder(holder: CulturalVenuesViewHolder, position: Int) {

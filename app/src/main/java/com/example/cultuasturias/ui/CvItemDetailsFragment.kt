@@ -1,60 +1,127 @@
 package com.example.cultuasturias.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import com.example.cultuasturias.CultuAstApp
 import com.example.cultuasturias.R
+import com.example.cultuasturias.databinding.FragmentCvItemDetailsBinding
+import com.example.cultuasturias.domain.CvItemDetailsViewModel
+import com.example.cultuasturias.model.CulturalVenueItem
+import com.smarteist.autoimageslider.SliderView
+import java.util.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CvItemDetailsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CvItemDetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentCvItemDetailsBinding? = null
+    private val binding get() = _binding!!
+    private val cvItemDetailsViewModel: CvItemDetailsViewModel by viewModels {
+        CvItemDetailsViewModel.CvItemDetailsViewModelFactory((activity?.application as CultuAstApp).repository)
+    }
+    private lateinit var sliderAdapter: ImgSliderAdapter
+    private var isExpanded: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+        val cvName = arguments?.getString("culturalVenue")
+        cvItemDetailsViewModel.setCvName(cvName!!)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cv_item_details, container, false)
+    ): View {
+        _binding = FragmentCvItemDetailsBinding.inflate(inflater, container, false)
+
+        // Manejar expansión y compresión del texto de descripción
+        binding.tvVerMas.setOnClickListener {
+            toggleDescriptionExpansion()
+        }
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CvItemDetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CvItemDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Observar los cambios en el objeto cultural venue y actualizar la vista
+        cvItemDetailsViewModel.mCulturalVenue.observe(viewLifecycleOwner) { culturalVenue ->
+            setupImageSlider(culturalVenue.getSlideUrls())
+            bindCvDetails(culturalVenue)
+            setupSocialIcons(culturalVenue)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setupImageSlider(images: List<String>) {
+        sliderAdapter = ImgSliderAdapter(ArrayList(images))
+        binding.cvImgSlider.setSliderAdapter(sliderAdapter)
+        binding.cvImgSlider.apply {
+            autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
+            scrollTimeInSec = 3
+            isAutoCycle = true
+        }
+    }
+
+    private fun bindCvDetails(culturalVenue: CulturalVenueItem) {
+        binding.cvName.text = culturalVenue.Nombre
+        binding.cvDescription.text = culturalVenue.Texto
+        binding.cvDireccion.text = culturalVenue.Direccion
+        binding.cvLocation.text = String.format(getString(R.string.location_format),
+                culturalVenue.Concejo,
+                culturalVenue.Localidad,
+                culturalVenue.CodigoPostal,
+                culturalVenue.Zona)
+        binding.cvTelefono.text = culturalVenue.Telefono
+        binding.cvObservaciones.text = culturalVenue.Observaciones
+
+        setupSocialIcons(culturalVenue)
+    }
+
+    private fun setupSocialIcons(culturalVenue: CulturalVenueItem) {
+        val socialIcons = mapOf(
+            binding.cvFacebook to culturalVenue.Facebook,
+            binding.cvTwitter to culturalVenue.Twitter,
+            binding.cvInstagram to culturalVenue.Instagram,
+            binding.cvYoutube to culturalVenue.Youtube
+        )
+
+        socialIcons.forEach { (iconView, url) ->
+            iconView.apply {
+                setOnClickListener {
+                    if(url.isNotEmpty())
+                        openUrlInBrowser(url)
+                    else
+                        Toast.makeText(context, "Enlace no disponible", Toast.LENGTH_SHORT,).show()
                 }
             }
+        }
+    }
+
+    private fun openUrlInBrowser(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+    }
+
+    private fun toggleDescriptionExpansion() {
+        if (isExpanded) {
+            binding.cvDescription.maxLines = 3
+            binding.tvVerMas.text = "Ver más"
+            isExpanded = false
+        } else {
+            binding.cvDescription.maxLines = Int.MAX_VALUE
+            binding.tvVerMas.text = "Ver menos"
+            isExpanded = true
+        }
     }
 }

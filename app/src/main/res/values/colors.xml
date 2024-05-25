@@ -6,7 +6,10 @@
     <color name="colorAccent">#5294EF</color>
     <color name="colorBackground">#F0F0F0</color>
     <color name="colorText">#060A0F</color>
+    <color name="colorTextSecondary">#262626</color>
     <color name="colorShadow">#F4F4F4</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorItemBackground">#FCFCFC</color>
+    <color name="colorBlack">#000000</color>
     <color name="colorPhoneNavBar">#297ED3</color>
 </resources>

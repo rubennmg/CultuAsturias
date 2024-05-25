@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.map
 
 class CulturalVenueViewModel : ViewModel() {
-
     private val _cultuAstUIStateObservable = MutableLiveData<CultuAstUIState>()
     val cultuAstUIStateObservable: LiveData<CultuAstUIState> get() = _cultuAstUIStateObservable
 
@@ -25,7 +24,7 @@ class CulturalVenueViewModel : ViewModel() {
         updateCulturalVenuesList()
     }
 
-    fun updateCulturalVenuesList() {
+    private fun updateCulturalVenuesList() {
         viewModelScope.launch {
             Repository.updateCulturalVenues().collect { result ->
                 when (result) {
@@ -33,7 +32,7 @@ class CulturalVenueViewModel : ViewModel() {
                         _cultuAstUIStateObservable.value = CultuAstUIState.Success(result.data!!)
                     }
                     is ApiResult.Error -> {
-                        // Si se produce un error al cargar los datos de la API, se cargan los datos de la base de datos
+                        // Si se produce un error al cargar los datos de la API, se cargan los datos desde la base de datos
                         loadCulturalVenuesFromDb(result.message!!)
                     }
                 }
@@ -41,12 +40,11 @@ class CulturalVenueViewModel : ViewModel() {
         }
     }
 
-    fun loadCulturalVenuesFromDb(errorMsg: String) {
+    private fun loadCulturalVenuesFromDb(errorMsg: String) {
         viewModelScope.launch {
             Repository.getAllCulturalVenues().collect { localData ->
                 if (localData.isNotEmpty()) {
                     _cultuAstUIStateObservable.value = CultuAstUIState.Success(localData)
-                    _cultuAstUIStateObservable.value = CultuAstUIState.Error(errorMsg)
                 } else {
                     _cultuAstUIStateObservable.value = CultuAstUIState.Error(errorMsg)
                 }

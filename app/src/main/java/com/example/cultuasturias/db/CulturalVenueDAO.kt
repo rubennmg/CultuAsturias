@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CulturalVenueDAO {
-
     @Query("SELECT * FROM cultural_venues_table")
     fun getAllCulturalVenues(): List<CulturalVenueItem>
 

@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 
 @Database(entities = [CulturalVenueItem::class], version = 1)
 abstract class CultuAstDatabase : RoomDatabase() {
-
     abstract fun culturalVenueDAO(): CulturalVenueDAO
 
     companion object {
@@ -36,10 +35,6 @@ abstract class CultuAstDatabase : RoomDatabase() {
 
         fun destroyInstance() {
             INSTANCE = null
-        }
-
-        fun getInstance(): CultuAstDatabase? {
-            return INSTANCE
         }
 
         private val CALLBACK = object : RoomDatabase.Callback() {

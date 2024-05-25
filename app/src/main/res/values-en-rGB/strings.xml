@@ -3,6 +3,12 @@
     <string name="app_name">CultuAsturias</string>
     <string name="itemHolder">NAME: %1$s</string>
     <string name="logo_desc">App logo</string>
-    <string name="search_hint">Search...</string>
+    <string name="search_hint">Search…</string>
     <string name="filter_button_desc">Filter button</string>
+    <string name="cvName">Cultural venue…</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="instagram">Instagram</string>
+    <string name="youtube">Youtube</string>
+    <string name="location_format">%1$s, %2$s, %3$s, %4$s</string>
 </resources>

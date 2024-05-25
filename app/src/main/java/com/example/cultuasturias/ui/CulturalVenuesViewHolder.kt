@@ -7,9 +7,12 @@ import com.example.cultuasturias.R
 import com.example.cultuasturias.databinding.CvItemBinding
 import com.example.cultuasturias.model.CulturalVenueItem
 
-class CulturalVenuesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    private val itemBinding = CvItemBinding.bind(itemView)
+class CulturalVenuesViewHolder(private val itemBinding: CvItemBinding, private  val onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(itemBinding.root) {
+    init {
+        itemView.setOnClickListener {
+            onItemClicked(adapterPosition)
+        }
+    }
 
     fun bind(item: CulturalVenueItem) {
         val BASE_URL = "https://www.turismoasturiasprofesional.es"

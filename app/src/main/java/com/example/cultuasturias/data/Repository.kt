@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 
 object Repository {
-
     private lateinit var culturalVenueDAO: CulturalVenueDAO
 
     fun initializeDatabase(context: Context) {
@@ -32,12 +31,16 @@ object Repository {
                 emit(ApiResult.Success(culturalVenues))
             } catch (e: Exception) {
                 emit(ApiResult.Error(e.toString()))
+                val cachedCulturalVenues = culturalVenueDAO.getAllCulturalVenues()
+                if (cachedCulturalVenues.isNotEmpty()) {
+                    emit(ApiResult.Success(cachedCulturalVenues))
+                }
             }
         }.flowOn(Dispatchers.IO)
 
     fun getAllCulturalVenues(): Flow<List<CulturalVenueItem>> {
         return flow {
-            emit(culturalVenueDAO?.getAllCulturalVenues() ?: emptyList())
+            emit(culturalVenueDAO.getAllCulturalVenues() ?: emptyList())
         }.flowOn(Dispatchers.IO)
     }
 
@@ -47,11 +50,11 @@ object Repository {
         culturalVenueDAO.searchCulturalVenues("%$name%")
             .flowOn(Dispatchers.IO)
 
-    fun getCulturalVenuesNames() = culturalVenueDAO?.getNames()
+    fun getCulturalVenueByName(name: String): Flow<CulturalVenueItem> = culturalVenueDAO.getCulturalVenueByName(name)
 
-    fun getCulturalVenueByName(name: String) = culturalVenueDAO?.getCulturalVenueByName(name)
+    fun getCulturalVenuesNames() = culturalVenueDAO.getNames()
 
-    suspend fun insertCulturalVenue(culturalVenueItem: CulturalVenueItem) = culturalVenueDAO?.insertCulturalVenue(culturalVenueItem)
+    suspend fun insertCulturalVenue(culturalVenueItem: CulturalVenueItem) = culturalVenueDAO.insertCulturalVenue(culturalVenueItem)
 
-    suspend fun deleteCulturalVenue(name: String) = culturalVenueDAO?.deleteCulturalVenue(name)
+    suspend fun deleteCulturalVenue(name: String) = culturalVenueDAO.deleteCulturalVenue(name)
 }
