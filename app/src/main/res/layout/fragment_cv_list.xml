@@ -1,19 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
-    tools:context=".ui.CvListFragment">
+    android:padding="8dp" >
+
+    <!-- Botones para añadir filtros -->
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="4dp">
+
+            <!-- Todos -->
+            <RadioButton
+                android:id="@+id/btnFilterAll"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="@string/filter_all"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:background="@drawable/btn_filter_selector"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"
+                android:layout_marginEnd="8dp"
+                android:button="@null"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- Occidente de Asturias -->
+            <RadioButton
+                android:id="@+id/btnFilterWest"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="@string/filter_west"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:background="@drawable/btn_filter_selector"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"
+                android:layout_marginEnd="8dp"
+                android:button="@null"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- Centro de Asturias -->
+            <RadioButton
+                android:id="@+id/btnFilterCentre"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="@string/filter_centre"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:background="@drawable/btn_filter_selector"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"
+                android:layout_marginEnd="8dp"
+                android:button="@null"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- Oriente de Asturias -->
+            <RadioButton
+                android:id="@+id/btnFilterEast"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="@string/filter_east"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:background="@drawable/btn_filter_selector"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"
+                android:layout_marginEnd="8dp"
+                android:button="@null"
+                android:clickable="true"
+                android:focusable="true" />
+        </RadioGroup>
+    </HorizontalScrollView>
 
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/cv_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

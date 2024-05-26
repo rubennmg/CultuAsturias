@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.cvListFragment,
                 R.id.cvMapFragment
-                // Añadir perfil o preferencias
             )
         )
         setSupportActionBar(binding.toolbar)

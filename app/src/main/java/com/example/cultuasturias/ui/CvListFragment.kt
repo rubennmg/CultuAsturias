@@ -1,7 +1,6 @@
 package com.example.cultuasturias.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +19,7 @@ import kotlinx.coroutines.launch
 class CvListFragment : Fragment() {
     private var _binding: FragmentCvListBinding? = null
     private val binding get() = _binding!!
-    private val culturalVenueViewModel = CulturalVenueViewModel()
+    private val culturalVenueViewModel: CulturalVenueViewModel by activityViewModels()
     private val sharedViewModel: SharedCvNameViewModel by activityViewModels()
     private val culturalVenuesListAdapter = CulturalVenuesListAdapter { it ->
         val bundle = Bundle().apply {
@@ -29,21 +28,32 @@ class CvListFragment : Fragment() {
         findNavController().navigate(R.id.action_cvListFragment_to_cvItemDetailsFragment, bundle)
     }
 
+    private lateinit var filterButtons: List<Pair<View, String>>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCvListBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        filterButtons = listOf(
+            binding.btnFilterAll to "Todos",
+            binding.btnFilterWest to "Occidente de Asturias",
+            binding.btnFilterCentre to "Centro de Asturias",
+            binding.btnFilterEast to "Oriente de Asturias"
+        )
+
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = culturalVenuesListAdapter
         binding.recyclerView.setHasFixedSize(true)
+
+        // Inicializar las preferencias compartidas
+        culturalVenueViewModel.initSharedPreferences(requireContext())
 
         // Observar el estado general de la UI
         culturalVenueViewModel.cultuAstUIStateObservable.observe(viewLifecycleOwner) { result ->
@@ -57,6 +67,11 @@ class CvListFragment : Fragment() {
             }
         }
 
+        // Observar la zona seleccionada
+        culturalVenueViewModel.selectedZone.observe(viewLifecycleOwner) { selectedZone ->
+            applyFilterAndSetState(selectedZone)
+        }
+
         // Observar el nombre de búsqueda
         sharedViewModel.searchName.observe(viewLifecycleOwner) { name ->
             lifecycleScope.launch {
@@ -68,6 +83,58 @@ class CvListFragment : Fragment() {
         lifecycleScope.launch {
             culturalVenueViewModel.searchResults.collect { results ->
                 culturalVenuesListAdapter.submitList(results)
+            }
+        }
+
+        // Filtrado por zona
+        setupZoneFilter()
+    }
+
+    private fun setupZoneFilter() {
+        filterButtons.forEachIndexed { _, (button, zone) ->
+            button.setOnClickListener {
+                culturalVenueViewModel.setSelectedZone(zone)
+                culturalVenueViewModel.applyZoneFilter(zone)
+                updateButtonState(button, filterButtons)
+            }
+        }
+
+        binding.btnFilterAll.setOnClickListener {
+            culturalVenueViewModel.setSelectedZone("Todos")
+            culturalVenueViewModel.clearFilters()
+            updateButtonState(binding.btnFilterAll, filterButtons)
+        }
+    }
+
+    private fun updateButtonState(selectedButton: View, filterButtons: List<Pair<View, String>>) {
+        filterButtons.forEach { (button, _) ->
+            if (button == selectedButton) {
+                button.isSelected = true
+                button.setBackgroundResource(R.drawable.btn_filter_selected_bg)
+            } else {
+                button.isSelected = false
+                button.setBackgroundResource(R.drawable.btn_filter_normal_bg)
+            }
+        }
+    }
+
+    private fun applyFilterAndSetState(zone: String) {
+        if (zone == "Todos") {
+            culturalVenueViewModel.clearFilters()
+        } else {
+            culturalVenueViewModel.applyZoneFilter(zone)
+        }
+        updateButtonStateForZone(zone)
+    }
+
+    private fun updateButtonStateForZone(selectedZone: String) {
+        filterButtons.forEach { (button, zone) ->
+            if (zone == selectedZone) {
+                button.isSelected = true
+                button.setBackgroundResource(R.drawable.btn_filter_selected_bg)
+            } else {
+                button.isSelected = false
+                button.setBackgroundResource(R.drawable.btn_filter_normal_bg)
             }
         }
     }
