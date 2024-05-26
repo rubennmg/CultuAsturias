@@ -9,12 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.cultuasturias.CultuAstApp
 import com.example.cultuasturias.R
 import com.example.cultuasturias.databinding.FragmentCvItemDetailsBinding
 import com.example.cultuasturias.domain.CvItemDetailsViewModel
 import com.example.cultuasturias.model.CulturalVenueItem
 import com.smarteist.autoimageslider.SliderView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.ArrayList
 
 class CvItemDetailsFragment : Fragment() {
@@ -56,11 +61,6 @@ class CvItemDetailsFragment : Fragment() {
             bindCvDetails(culturalVenue)
             setupSocialIcons(culturalVenue)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun setupImageSlider(images: List<String>) {
@@ -123,5 +123,10 @@ class CvItemDetailsFragment : Fragment() {
             binding.tvVerMas.text = "Ver menos"
             isExpanded = true
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

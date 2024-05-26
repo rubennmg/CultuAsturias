@@ -14,5 +14,4 @@ sealed class ApiResult <out T> (val status: AppStatus, val data: T?, val message
         data = null,
         message = exception
     )
-    // Loading ???
 }

@@ -25,6 +25,9 @@ navigationUiKtx = "2.7.7"
 glide = "5.0.0-rc01"
 cardview = "1.0.0"
 compiler = "5.0.0-rc01"
+playServicesMaps = "18.2.0"
+playServicesLocation = "21.2.0"
+androidMapsUtils = "3.8.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -51,6 +54,9 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "compiler" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+android-maps-utils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "androidMapsUtils" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

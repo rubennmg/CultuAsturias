@@ -39,5 +39,9 @@
         android:id="@+id/cvMapFragment"
         android:name="com.example.cultuasturias.ui.CvMapFragment"
         android:label="fragment_cv_map"
-        tools:layout="@layout/fragment_cv_map" />
+        tools:layout="@layout/fragment_cv_map" >
+        <action
+            android:id="@+id/action_cvMapFragment_to_cvItemDetailsFragment"
+            app:destination="@id/cvItemDetailsFragment" />
+    </fragment>
 </navigation>

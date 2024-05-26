@@ -3,6 +3,7 @@ package com.example.cultuasturias.model
 import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.android.gms.maps.model.LatLng
 
 @Entity(tableName = "cultural_venues_table")
 data class CulturalVenueItem(
@@ -60,6 +61,16 @@ data class CulturalVenueItem(
             Slide.split(",")
         } else {
             emptyList()
+        }
+    }
+
+    // Obtener par de coordenadas a partir del campo Coordenadas
+    fun getCoords(): LatLng {
+        val coords = Coordenadas.split(",")
+        return if (coords.size == 2) {
+            LatLng(coords[0].toDouble(), coords[1].toDouble())
+        } else {
+            LatLng(0.0, 0.0)
         }
     }
 }
