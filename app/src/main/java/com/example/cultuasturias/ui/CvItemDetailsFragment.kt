@@ -102,7 +102,7 @@ class CvItemDetailsFragment : Fragment() {
                     if(url.isNotEmpty())
                         openUrlInBrowser(url)
                     else
-                        Toast.makeText(context, "Enlace no disponible", Toast.LENGTH_SHORT,).show()
+                        Toast.makeText(context, getString(R.string.no_link), Toast.LENGTH_SHORT,).show()
                 }
             }
         }
@@ -116,11 +116,11 @@ class CvItemDetailsFragment : Fragment() {
     private fun toggleDescriptionExpansion() {
         if (isExpanded) {
             binding.cvDescription.maxLines = 3
-            binding.tvVerMas.text = "Ver más"
+            binding.tvVerMas.text = getString(R.string.see_more)
             isExpanded = false
         } else {
             binding.cvDescription.maxLines = Int.MAX_VALUE
-            binding.tvVerMas.text = "Ver menos"
+            binding.tvVerMas.text = getString(R.string.see_less)
             isExpanded = true
         }
     }

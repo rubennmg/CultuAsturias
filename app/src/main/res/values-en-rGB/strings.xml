@@ -15,4 +15,15 @@
     <string name="filter_west">Western Asturias</string>
     <string name="filter_centre">Central Asturias</string>
     <string name="filter_east">Eastern Asturias</string>
+    <string name="home">Home</string>
+    <string name="map">Map</string>
+    <string name="about">About</string>
+    <string name="config">Settings</string>
+    <string name="general_data">General data</string>
+    <string name="description">Description</string>
+    <string name="remarks">Remarks</string>
+    <string name="see_more">See more</string>
+    <string name="see_less">See less</string>
+    <string name="no_link">No link available</string>
+    <string name="map_language">en</string>
 </resources>

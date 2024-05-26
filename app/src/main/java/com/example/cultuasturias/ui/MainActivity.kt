@@ -90,14 +90,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show()
                 true
             }
-            R.id.action_about -> {
-                Toast.makeText(this, "Acerca de", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.action_preferences -> {
-                Toast.makeText(this, "Preferencias", Toast.LENGTH_SHORT).show()
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
     }

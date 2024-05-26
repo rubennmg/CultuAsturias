@@ -3,13 +3,13 @@
     <item
         android:id="@+id/cvListFragment"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/cvMapFragment"
         android:icon="@drawable/ic_map"
-        android:title="Mapa" />
+        android:title="@string/map" />
     <item
-        android:id="@+id/navigation_profile"
+        android:id="@+id/navigation_about"
         android:icon="@drawable/ic_profile"
-        android:title="Perfil" />
+        android:title="@string/about" />
 </menu>

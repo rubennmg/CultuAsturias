@@ -3,6 +3,7 @@ package com.example.cultuasturias.ui
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,9 +25,11 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.maps.android.clustering.ClusterItem
 import com.google.maps.android.clustering.ClusterManager
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class CvMapFragment : Fragment(), OnMapReadyCallback {
     private var _binding: FragmentCvMapBinding? = null
@@ -58,6 +61,9 @@ class CvMapFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap
         isMapReady = true
+
+        // Cargar estilo del mapa (idioma)
+        loadMapStyle()
 
         // Inicializar ClusterManager
         clusterManager = ClusterManager(requireContext(), googleMap)
@@ -132,6 +138,22 @@ class CvMapFragment : Fragment(), OnMapReadyCallback {
                     CameraUpdateFactory.newLatLngZoom(currentLatLng, DEFAULT_ZOOM.toFloat())
                 )
             }
+        }
+    }
+
+    private fun loadMapStyle() {
+        val currentLanguage = resources.getString(R.string.map_language)
+        val styleResourceId = if (currentLanguage == "es") {
+            R.raw.map_style_es
+        } else {
+            R.raw.map_style_en
+        }
+        try {
+            val inputStream = resources.openRawResource(styleResourceId)
+            val style = MapStyleOptions.loadRawResourceStyle(requireContext(), styleResourceId)
+            googleMap.setMapStyle(style)
+        } catch (e: Resources.NotFoundException) {
+            e.printStackTrace()
         }
     }
 

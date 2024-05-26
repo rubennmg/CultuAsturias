@@ -14,4 +14,15 @@
     <string name="filter_west">Occidente de Asturias</string>
     <string name="filter_centre">Centro de Asturias</string>
     <string name="filter_east">Oriente de Asturias</string>
+    <string name="home">Inicio</string>
+    <string name="map">Mapa</string>
+    <string name="about">Acerca de</string>
+    <string name="config">Configuración</string>
+    <string name="general_data">Datos generales</string>
+    <string name="description">Descripción</string>
+    <string name="remarks">Observaciones</string>
+    <string name="see_more">Ver más</string>
+    <string name="see_less">Ver menos</string>
+    <string name="no_link">No hay enlace disponible</string>
+    <string name="map_language">es</string>
 </resources>
