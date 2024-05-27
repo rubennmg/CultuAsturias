@@ -74,16 +74,16 @@ class CvItemDetailsFragment : Fragment() {
     }
 
     private fun bindCvDetails(culturalVenue: CulturalVenueItem) {
-        binding.cvName.text = culturalVenue.Nombre
-        binding.cvDescription.text = culturalVenue.Texto
-        binding.cvDireccion.text = culturalVenue.Direccion
+        binding.cvName.text = culturalVenue.Nombre.ifEmpty { getString(R.string.no_data) }
+        binding.cvDescription.text = culturalVenue.Texto.ifEmpty { getString(R.string.no_data) }
+        binding.cvDireccion.text = culturalVenue.Direccion.ifEmpty { getString(R.string.no_data) }
         binding.cvLocation.text = String.format(getString(R.string.location_format),
                 culturalVenue.Concejo,
                 culturalVenue.Localidad,
                 culturalVenue.CodigoPostal,
                 culturalVenue.Zona)
-        binding.cvTelefono.text = culturalVenue.Telefono
-        binding.cvObservaciones.text = culturalVenue.Observaciones
+        binding.cvTelefono.text = culturalVenue.Telefono.ifEmpty { getString(R.string.no_data) }
+        binding.cvObservaciones.text = culturalVenue.Observaciones.ifEmpty { getString(R.string.no_data) }
 
         setupSocialIcons(culturalVenue)
     }
