@@ -9,19 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
 import com.example.cultuasturias.CultuAstApp
 import com.example.cultuasturias.R
 import com.example.cultuasturias.databinding.FragmentCvItemDetailsBinding
 import com.example.cultuasturias.domain.CvItemDetailsViewModel
 import com.example.cultuasturias.model.CulturalVenueItem
 import com.smarteist.autoimageslider.SliderView
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.ArrayList
 
+/**
+ * Fragmento para la vista de detalles de un CulturalVenueItem.
+ *
+ */
 class CvItemDetailsFragment : Fragment() {
     private var _binding: FragmentCvItemDetailsBinding? = null
     private val binding get() = _binding!!

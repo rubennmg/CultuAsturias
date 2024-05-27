@@ -7,6 +7,12 @@ import com.example.cultuasturias.R
 import com.example.cultuasturias.databinding.SliderItemBinding
 import com.smarteist.autoimageslider.SliderViewAdapter
 
+/**
+ * Clase que representa el adaptador para el slider de imágenes de la vista de detalles de un CulturalVenueItem.
+ * La carga de imágenes se hace con Glide.
+ *
+ * @param imageUrl Lista de URLs de las imágenes a mostrar.
+ */
 class ImgSliderAdapter(private val imageUrl: ArrayList<String>) : SliderViewAdapter<ImgSliderAdapter.SliderViewHolder>() {
     override fun getCount(): Int {
         return imageUrl.size

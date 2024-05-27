@@ -11,6 +11,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel que se encarga de gestionar los datos de la pantalla del mapa.
+ *
+ */
 class MapViewModel : ViewModel() {
     private val _mapUIStateObservable = MutableLiveData<CultuAstUIState>()
     val mapUIStateObservable: LiveData<CultuAstUIState> get() = _mapUIStateObservable
@@ -28,7 +32,7 @@ class MapViewModel : ViewModel() {
                 if (localData.isNotEmpty()) {
                     _mapUIStateObservable.value = CultuAstUIState.Success(localData)
                 } else {
-                    _mapUIStateObservable.value = CultuAstUIState.Error("No se han encontrado datos") // i18n
+                    _mapUIStateObservable.value = CultuAstUIState.Error("Error fetching data from database")
                 }
             }
         }

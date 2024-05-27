@@ -11,6 +11,12 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import java.lang.reflect.Type
 
+/**
+ * Clase que se encarga de realizar la petición a la API REST para obtener los datos de los museos y espacios culturales
+ * En este caso los datos se obtienen de un fichero JSON alojado en un servidor
+ *
+ */
+
 private val BASE_URL = " http://orion.edv.uniovi.es"
 
 interface RestApiService {

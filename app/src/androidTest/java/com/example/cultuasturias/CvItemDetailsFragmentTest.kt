@@ -22,7 +22,7 @@ import org.junit.Test
 
 /**
  * Verificar que el fragmento de detalles de un cultural venue muestra
- * correctamente la información.
+ * correctamente la información. Uso de Espresso y Espresso Intents.
  *
  */
 class CvItemDetailsFragmentTest {

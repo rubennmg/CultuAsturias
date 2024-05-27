@@ -12,6 +12,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * Base de datos de la aplicación. Almacena datos de tipo [CulturalVenueItem] en la
+ * tabla cultural_venues_table.
+ *
+ */
 @Database(entities = [CulturalVenueItem::class], version = 1)
 abstract class CultuAstDatabase : RoomDatabase() {
     abstract fun culturalVenueDAO(): CulturalVenueDAO

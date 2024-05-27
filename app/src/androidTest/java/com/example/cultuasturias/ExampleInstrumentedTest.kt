@@ -8,7 +8,10 @@ import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 
-// Prueba de contexto de la aplicación (por defecto)
+/**
+ * Prueba de contexto de la aplicación (por defecto)
+ *
+ */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test

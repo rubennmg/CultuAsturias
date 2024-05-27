@@ -7,6 +7,10 @@ import androidx.room.Query
 import com.example.cultuasturias.model.CulturalVenueItem
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Dao para realizar operaciones CRUD sobre la tabla cultural_venues_table de la base de datos
+ *
+ */
 @Dao
 interface CulturalVenueDAO {
     @Query("SELECT * FROM cultural_venues_table")

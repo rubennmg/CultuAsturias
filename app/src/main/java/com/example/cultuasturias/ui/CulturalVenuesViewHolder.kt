@@ -1,13 +1,17 @@
 package com.example.cultuasturias.ui
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.cultuasturias.R
 import com.example.cultuasturias.databinding.CvItemBinding
 import com.example.cultuasturias.model.CulturalVenueItem
 
+/**
+ * Clase que representa el ViewHolder para la lista principal de lugares culturales.
+ *
+ * @param itemBinding Layout de la vista de un elemento de la lista.
+ * @param onItemClicked Función que se ejecuta al hacer click en un elemento de la lista.
+ */
 class CulturalVenuesViewHolder(private val itemBinding: CvItemBinding, private  val onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(itemBinding.root) {
     init {
         itemView.setOnClickListener {

@@ -29,8 +29,13 @@ import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.maps.android.clustering.ClusterItem
 import com.google.maps.android.clustering.ClusterManager
 import kotlinx.coroutines.launch
-import java.util.Locale
 
+/**
+ * Fragmento para la vista de mapa de CulturalVenues.
+ * Los markers del mapa se agrupan en clusters en función del zoom. La posición inicial
+ * del mapa se ajusta a la posición del usuario.
+ *
+ */
 class CvMapFragment : Fragment(), OnMapReadyCallback {
     private var _binding: FragmentCvMapBinding? = null
     private val binding get() = _binding!!

@@ -10,6 +10,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.example.cultuasturias.databinding.FragmentSettingsBinding
 
+/**
+ * Fragmento para la vista de ajustes de la aplicación.
+ * Se permite el cambio de tema oscuro/claro.
+ *
+ */
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null

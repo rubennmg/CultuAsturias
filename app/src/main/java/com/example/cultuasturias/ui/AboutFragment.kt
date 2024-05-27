@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.cultuasturias.databinding.FragmentAboutBinding
 
-
+/**
+ * Fragmento para la vista "Acerca de"
+ *
+ */
 class AboutFragment : Fragment() {
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!

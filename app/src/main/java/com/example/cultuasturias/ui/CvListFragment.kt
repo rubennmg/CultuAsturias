@@ -16,6 +16,10 @@ import com.example.cultuasturias.domain.CulturalVenueViewModel
 import com.example.cultuasturias.domain.SharedCvNameViewModel
 import kotlinx.coroutines.launch
 
+/**
+ * Fragmento para la lista de lugares culturales.
+ *
+ */
 class CvListFragment : Fragment() {
     private var _binding: FragmentCvListBinding? = null
     private val binding get() = _binding!!

@@ -9,6 +9,10 @@ import androidx.lifecycle.switchMap
 import com.example.cultuasturias.data.Repository
 import com.example.cultuasturias.model.CulturalVenueItem
 
+/**
+ * ViewModel que se encarga de gestionar los datos de la pantalla de detalles de un CulturalVenueItem.
+ *
+ */
 class CvItemDetailsViewModel(repository: Repository) : ViewModel() {
     private val cvName = MutableLiveData<String>()
 

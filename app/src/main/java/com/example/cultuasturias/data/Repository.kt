@@ -11,6 +11,11 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 
+/**
+ * Repositorio de la aplicación. Se encarga de gestionar la comunicación entre API y la base de datos a
+ * través de la clase [RestApi] y el DAO [CulturalVenueDAO], respectivamente
+ *
+ */
 object Repository {
     private lateinit var culturalVenueDAO: CulturalVenueDAO
 

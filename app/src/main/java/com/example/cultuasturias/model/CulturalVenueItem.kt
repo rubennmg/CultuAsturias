@@ -5,6 +5,13 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.android.gms.maps.model.LatLng
 
+/**
+ * Clase que representa un elemento de la lista de espacios culturales
+ * Autogenerada con la herramienta jsonTokotlin
+ * Añadidos métodos para obtener las URLs de las imágenes y las coordenadas
+ * de cada espacio cultural
+ *
+ */
 @Entity(tableName = "cultural_venues_table")
 data class CulturalVenueItem(
     val AccesoATerrazaOZonaExterior: String,

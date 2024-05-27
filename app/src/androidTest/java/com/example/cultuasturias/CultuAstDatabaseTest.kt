@@ -14,7 +14,7 @@ import org.junit.Test
 import org.junit.Assert.*
 
 /**
- * Prueba de inserción y lectura de un CulturalVenueItem en la base de datos.
+ * Prueba básica de inserción y lectura de un CulturalVenueItem en la base de datos.
  *
  */
 class CultuAstDatabaseTest {

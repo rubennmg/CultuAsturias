@@ -2,7 +2,6 @@ package com.example.cultuasturias.domain
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +14,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel que se encarga de gestionar los datos de la pantall principal que contiene
+ * la lista de CulturalVenueItems.
+ *
+ */
 class CulturalVenueViewModel : ViewModel() {
     private val _cultuAstUIStateObservable = MutableLiveData<CultuAstUIState>()
     val cultuAstUIStateObservable: LiveData<CultuAstUIState> get() = _cultuAstUIStateObservable
