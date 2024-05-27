@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">CultuAsturias</string>
+    <string name="app_version">Versión 1.0</string>
+    <string name="app_description">CultuAsturias, una aplicación cuyo objetivo es mostrar e informar sobre todos los espacios culturales de interés situados en Asturias. Obśervalos en un mapa, accede al detalle de cada uno… ¡y mucho más!</string>
     <string name="itemHolder">NOMBRE: %1$s  —  CONCEJO: %2$s —  LOCALIDAD: %3$s</string>
     <string name="logo_desc">Logo de la app</string>
     <string name="search_hint">Buscar…</string>
@@ -29,4 +31,6 @@
     <string name="dark_theme">Oscuro</string>
     <string name="match_device_theme">Seguir tema del dispositivo</string>
     <string name="app_theme">Tema de la aplicación</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

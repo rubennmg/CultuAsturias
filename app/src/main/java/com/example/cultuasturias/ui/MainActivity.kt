@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         // Ocultar la barra de búsqueda en el mapa y el perfil
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.cvMapFragment, R.id.cvItemDetailsFragment, R.id.settingsFragment -> {
+                R.id.cvMapFragment, R.id.cvItemDetailsFragment, R.id.settingsFragment, R.id.aboutFragment -> {
                     binding.searchBar.visibility = View.GONE
                 }
                 else -> {
@@ -95,8 +96,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_about -> {
-                Toast.makeText(this, "Acerca de", Toast.LENGTH_SHORT).show()
+            R.id.aboutFragment -> {
+                navController.navigate(R.id.aboutFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)

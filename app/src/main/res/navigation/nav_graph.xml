@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_cvListFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_cvListFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
 
     <fragment
@@ -62,4 +65,8 @@
             android:id="@+id/action_settingsFragment_to_cvListFragment"
             app:destination="@id/cvListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.cultuasturias.ui.AboutFragment"
+        android:label="AboutFragment" />
 </navigation>

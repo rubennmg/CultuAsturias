@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CultuAsturias</string>
+    <string name="app_version">Version 1.0</string>
+    <string name="app_description">CultuAsturias, an application whose objective is to inform and show all the cultural spaces of interest located in Asturias. Watch them on a map, access the details of each… and much more!</string>
     <string name="itemHolder">NAME: %1$s</string>
     <string name="logo_desc">App logo</string>
     <string name="search_hint">Search…</string>
