@@ -46,8 +46,8 @@ object Repository {
 
     suspend fun insertAll(culturalVenues: List<CulturalVenueItem>) = culturalVenueDAO.insertAll(culturalVenues)
 
-    fun searchCulturalVenues(name: String): Flow<List<CulturalVenueItem>> =
-        culturalVenueDAO.searchCulturalVenues("%$name%")
+    fun searchCulturalVenues(query: String): Flow<List<CulturalVenueItem>> =
+        culturalVenueDAO.searchCulturalVenues("%$query%")
             .flowOn(Dispatchers.IO)
 
     fun getCulturalVenueByName(name: String): Flow<CulturalVenueItem> = culturalVenueDAO.getCulturalVenueByName(name)

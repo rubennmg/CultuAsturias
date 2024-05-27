@@ -5,6 +5,21 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="CultuAstDatabaseTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="CvListFragmentToDetailsTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="testNavigationToCvItemDetailsFragment()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="CvItemDetailsFragmentTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="testCvItemDetailsFragment()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>

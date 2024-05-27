@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_cvListFragment_to_cvMapFragment"
             app:destination="@id/cvMapFragment" />
+        <action
+            android:id="@+id/action_cvListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -43,5 +46,20 @@
         <action
             android:id="@+id/action_cvMapFragment_to_cvItemDetailsFragment"
             app:destination="@id/cvItemDetailsFragment" />
+        <action
+            android:id="@+id/action_cvMapFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.cultuasturias.ui.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_cvMapFragment"
+            app:destination="@id/cvMapFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_cvListFragment"
+            app:destination="@id/cvListFragment" />
     </fragment>
 </navigation>

@@ -27,6 +27,6 @@ interface CulturalVenueDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(culturalVenues: List<CulturalVenueItem>)
 
-    @Query("SELECT * FROM cultural_venues_table WHERE Nombre LIKE :name")
-    fun searchCulturalVenues(name: String): Flow<List<CulturalVenueItem>>
+    @Query("SELECT * FROM cultural_venues_table WHERE Nombre LIKE '%' || :query || '%' OR Localidad LIKE '%' || :query || '%' OR Concejo LIKE '%' || :query || '%'")
+    fun searchCulturalVenues(query: String): Flow<List<CulturalVenueItem>>
 }

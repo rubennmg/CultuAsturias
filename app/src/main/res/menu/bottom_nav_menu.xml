@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_map"
         android:title="@string/map" />
     <item
-        android:id="@+id/navigation_about"
-        android:icon="@drawable/ic_profile"
-        android:title="@string/about" />
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/config" />
 </menu>

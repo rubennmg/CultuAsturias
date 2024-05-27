@@ -25,4 +25,8 @@
     <string name="see_less">Ver menos</string>
     <string name="no_link">No hay enlace disponible</string>
     <string name="map_language">es</string>
+    <string name="light_theme">Claro</string>
+    <string name="dark_theme">Oscuro</string>
+    <string name="match_device_theme">Seguir tema del dispositivo</string>
+    <string name="app_theme">Tema de la aplicación</string>
 </resources>

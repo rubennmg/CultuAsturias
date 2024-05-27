@@ -26,4 +26,8 @@
     <string name="see_less">See less</string>
     <string name="no_link">No link available</string>
     <string name="map_language">en</string>
+    <string name="light_theme">Dark</string>
+    <string name="dark_theme">Light</string>
+    <string name="match_device_theme">Match device theme</string>
+    <string name="app_theme">Application theme</string>
 </resources>

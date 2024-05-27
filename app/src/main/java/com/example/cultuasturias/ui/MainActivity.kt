@@ -1,5 +1,8 @@
 package com.example.cultuasturias.ui
 
+import android.content.Context
+import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +13,7 @@ import android.view.Window
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -30,6 +34,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Restaurar el tema desde SharedPreferences
+        val sharedPref = getSharedPreferences("settings", Context.MODE_PRIVATE)
+        val themeMode = sharedPref.getInt("ThemeMode", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        AppCompatDelegate.setDefaultNightMode(themeMode)
+
         // Inflar el layout de la actividad
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -45,7 +54,8 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.cvListFragment,
-                R.id.cvMapFragment
+                R.id.cvMapFragment,
+                R.id.settingsFragment
             )
         )
         setSupportActionBar(binding.toolbar)
@@ -67,9 +77,8 @@ class MainActivity : AppCompatActivity() {
         // Ocultar la barra de búsqueda en el mapa y el perfil
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.cvMapFragment, R.id.cvItemDetailsFragment -> {
+                R.id.cvMapFragment, R.id.cvItemDetailsFragment, R.id.settingsFragment -> {
                     binding.searchBar.visibility = View.GONE
-                    binding.toolbar.title = ""
                 }
                 else -> {
                     binding.searchBar.visibility = View.VISIBLE
@@ -86,8 +95,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> {
-                Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show()
+            R.id.action_about -> {
+                Toast.makeText(this, "Acerca de", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -28,6 +28,15 @@ compiler = "5.0.0-rc01"
 playServicesMaps = "18.2.0"
 playServicesLocation = "21.2.0"
 androidMapsUtils = "3.8.2"
+espressoContrib = "3.5.1"
+navigationTesting = "2.7.5"
+mockitoAndroid = "5.12.0"
+mockitoAll = "2.0.2-beta"
+fragmentTesting = "1.6.0"
+kotlinxCoroutinesTest = "1.8.1"
+mockitoCore = "5.12.0"
+mockitoInline = "5.2.0"
+espressoIntents = "3.5.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -57,6 +66,15 @@ compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 android-maps-utils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "androidMapsUtils" }
+androidx-espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espressoContrib" }
+androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigationTesting" }
+mockito-android = { group = "org.mockito", name = "mockito-android", version.ref = "mockitoAndroid" }
+mockito-all = { group = "org.mockito", name = "mockito-all", version.ref = "mockitoAll" }
+androidx-fragment-testing = { group = "androidx.fragment", name = "fragment-testing", version.ref = "fragmentTesting" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoCore" }
+mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
+androidx-espresso-intents = { group = "androidx.test.espresso", name = "espresso-intents", version.ref = "espressoIntents" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
