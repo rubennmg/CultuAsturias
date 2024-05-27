@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 /**
- * ViewModel compartido entre la pantalla principal y la pantalla de detalles de un CulturalVenueItem.
- * Se utiliza para compartir el nombre de un CulturalVenueItem entre ambos fragmentos
+ * ViewModel cuyo objetivo es proporcionar el texto de búsqueda introducido por el usuario
+ * en la barra de búsqueda de la lista de lugares culturales.
  *
  */
 class SharedCvNameViewModel : ViewModel() {
